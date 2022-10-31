@@ -1,0 +1,6 @@
+setuptools
+wheel
+p5py
+PEP517
+rasa-x==1.0.1
+rasa[spacy]==2.8.25

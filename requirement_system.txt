@@ -1,0 +1,4 @@
+python3-pip
+libxml2-dev
+libxmlsec1-dev
+pkg-config
