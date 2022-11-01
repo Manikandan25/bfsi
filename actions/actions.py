@@ -25,3 +25,29 @@
 #         dispatcher.utter_message(text="Hello World!")
 #
 #         return []
+
+from typing import Any, Text, Dict, List
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
+from rasa_sdk.events import FollowupAction
+from rasa_sdk.events import BotUttered
+import sqlite3
+import random, string
+# change this to the location of your SQLite file
+path_to_db = "actions/example.db"
+
+class CreateSavingsAccount(Action):
+    def name(self) -> Text:
+        return "action_create_savings_account"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(template="utter_create_savings_account")
+        response = "utter_create_savings_account"
+        return []

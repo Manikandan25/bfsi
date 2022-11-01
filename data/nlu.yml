@@ -1,6 +1,47 @@
 version: "2.0"
 
 nlu:
+- intent: accounts
+  examples: |
+    - accounts
+    - I want to know about accounts
+    - I am interested in accounts
+    - list me the services under accounts
+
+- intent: savings_account
+  examples: |
+    - savings_accounts
+    - savings account
+    - I want to know about saving account
+    - I am interested in savings account
+    - list me the services under saving account
+    - show savings account
+
+- intent: create_savings_account
+  examples: |
+    - create_savings_accounts
+    - I would like to open new savings account
+    - Open new savings account
+    - Create a saving account
+
+- intent: current_account
+  examples: |
+    - current_accounts
+    - current account
+    - I want to know about curent account
+    - I am interested in current account
+    - list me the services under current account
+    - show the current account
+
+- intent: cards
+  examples: |
+    - cards
+    - I want to know about cards
+    - I am interested in cards
+    - list me the services under cards
+    - what are the cards do you offer ?
+
+    
 - intent: greet
   examples: |
     - hey
@@ -16,6 +57,11 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - yo
+    - HEY
+    - heyy
+    - Hey!!!
+    - hallo?
 
 - intent: goodbye
   examples: |

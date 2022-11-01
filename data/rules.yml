@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Activate email form for create account
+  steps:
+  - intent: create_savings_account
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: create_savings_account_form
+  - active_loop: create_savings_account_form
+  - active_loop: null
+  - action: action_create_savings_account
