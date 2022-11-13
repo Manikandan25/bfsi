@@ -12,17 +12,14 @@ intents:
 - deny
 - goodbye
 - greet
+- inform
 - mood_great
 - mood_unhappy
 - savings_account
 entities:
 - email
-- mobile_number
 slots:
   email:
-    type: text
-    influence_conversation: false
-  mobile_number:
     type: text
     influence_conversation: false
 responses:
@@ -35,41 +32,39 @@ responses:
     text: Hi there! I'm WHAFA, your personal Finance Assistant. What section I can help you with?
   utter_accounts:
   - buttons:
-    - payload: Savings Account
-      title: savings_account
-    - payload: Current Account
-      title: current_account
+    - payload: savings_account
+      title: Savings Account
+    - payload: current_account
+      title: Current Account
     text: Which type of account you would like to know more about?
   utter_savings_account:
   - buttons:
-    - payload: Open a new savings account
-      title: create_savings_account
-    - payload: Balance of the savings account
-      title: balance_savings_account
-    - payload: Show last 10 transactions
-      title: last_10_transactions_savings_account
+    - payload: create_savings_account
+      title: Open a new savings account
+    - payload: balance_savings_account
+      title: Balance of the savings account
+    - payload: last_10_transactions_savings_account
+      title: Show last 10 transactions
     text: How can I help with savings account?
   utter_ask_create_savings_account_form_email:
   - text: In order to create an account, we need your email address?
-  utter_ask_create_savings_account_form_mobile_number:
-  - text: Please help me with Mobile number to create an account?
   utter_create_savings_account:
-  - text: Based on the informations provided, I have submitted a request to create a savings accounts at our concern. You'll will receive the updates by email on {email} and by text on {mobile_number}
+  - text: Based on the informations provided, I have submitted a request to create a savings accounts at our concern. You'll will receive the updates by email on {email} soon.
   utter_current_account:
   - buttons:
-    - payload: Open a new current account
-      title: create_current_account
-    - payload: Balance of the current account
-      title: balance_current_account
-    - payload: Show last 10 transactions
-      title: last_10_transactions_current_account
+    - payload: create_current_account
+      title: Open a new current account
+    - payload: balance_current_account
+      title: Balance of the current account
+    - payload: last_10_transactions_current_account
+      title: Show last 10 transactions
     text: How can I help with current account?
   utter_cards:
   - buttons:
-    - payload: Debit Card
-      title: debit_card
-    - payload: Credit Card
-      title: credit_card
+    - payload: debit_card
+      title: Debit Card
+    - payload: credit_card
+      title: Credit Card
     text: What do like know more about ?
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
@@ -89,12 +84,6 @@ forms:
     required_slots:
       email:
       - entity: email
-        type: from_entity
-      - intent:
-        - inform
-        type: from_text
-      mobile_number:
-      - entity: mobile_number
         type: from_entity
       - intent:
         - inform

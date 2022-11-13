@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: accounts
   examples: |
@@ -7,7 +6,6 @@ nlu:
     - I want to know about accounts
     - I am interested in accounts
     - list me the services under accounts
-
 - intent: savings_account
   examples: |
     - savings_accounts
@@ -16,14 +14,12 @@ nlu:
     - I am interested in savings account
     - list me the services under saving account
     - show savings account
-
 - intent: create_savings_account
   examples: |
     - create_savings_accounts
     - I would like to open new savings account
     - Open new savings account
     - Create a saving account
-
 - intent: current_account
   examples: |
     - current_accounts
@@ -32,7 +28,6 @@ nlu:
     - I am interested in current account
     - list me the services under current account
     - show the current account
-
 - intent: cards
   examples: |
     - cards
@@ -40,8 +35,19 @@ nlu:
     - I am interested in cards
     - list me the services under cards
     - what are the cards do you offer ?
-
-    
+- intent: inform
+  examples: |
+    - example@rasa.com
+    - my email is example@yahoo.com
+    - it's example@gmail.com
+    - it's a@b.com
+    - xyz@hulaloo.ai
+    - asdf@asdf.com
+    - wait actually that email is wrong. it should be asdf1@asdf.com
+    - test@test.com
+    - manikandan@zilliontechnologies.com
+    - me@rasa.com
+    - manikandanflies@gmail.com
 - intent: greet
   examples: |
     - hey
@@ -62,7 +68,6 @@ nlu:
     - heyy
     - Hey!!!
     - hallo?
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -76,7 +81,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -85,7 +89,6 @@ nlu:
     - of course
     - that sounds good
     - correct
-
 - intent: deny
   examples: |
     - no
@@ -95,7 +98,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: mood_great
   examples: |
     - perfect
@@ -112,7 +114,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -129,7 +130,6 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?

@@ -12,6 +12,16 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- rule: accounts tab
+  steps:
+  - intent: accounts
+  - action: utter_accounts
+
+- rule: savings accounts tab
+  steps:
+  - intent: savings_account
+  - action: utter_savings_account
+
 - rule: Activate email form for create account
   steps:
   - intent: create_savings_account
