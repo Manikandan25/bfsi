@@ -1,0 +1,184 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+    
+<!-- Mirrored from themesbrand.com/minible/layouts/chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Nov 2021 12:20:31 GMT -->
+<head>
+        
+        <meta charset="utf-8" />
+        <title>CSR Geeks | Whatsapp Airtel IQ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    
+    <body>
+
+    <!-- <body data-layout="horizontal" data-topbar="colored"> -->
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            
+
+
+
+            
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <!-- <div class="page-content"> -->
+                    <div class="container-fluid">
+
+
+
+                        <div class="d-lg-flex mb-4">
+
+                            <div class="w-100 user-chat mt-4 mt-sm-0 ms-lg-1">
+                                <div class="card">
+                                    <div class="p-3 px-lg-4 border-bottom">
+                                        <div class="row">
+                                            <div class="col-md-4 col-6">
+                                                <h5 class="font-size-16 mb-1 text-truncate"><a href="#" class="text-dark">CSR Geeks Chatbot</a></h5>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="px-lg-2">
+                                        <div class="chat-conversation p-3">
+                                            <ul class="list-unstyled mb-0" data-simplebar style="max-height: 455px;" id="conversation_list">
+                                                {% if data|length > 0 %}
+                                                {% for dat in data %}
+                                                <li class="{{dat.side}}">
+                                                    <div class="conversation-list">
+                                                        <div class="ctext-wrap">
+                                                            <div class="ctext-wrap-content">
+                                                                <h5 class="font-size-14 conversation-name"><a href="#" class="text-dark">{{dat.username}}</a> <span class="d-inline-block font-size-12 text-muted ms-2">{{dat.time}}</span></h5>
+                                                                <p class="mb-0">
+                                                                    {{dat.message}}
+                                                                </p>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </li>
+                                                {% endfor %}
+                                                {% endif %}
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-3 chat-input-section">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control chat-input rounded" placeholder="Enter Message..." id="user_input">
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <button type="submit" onclick="UpdateStatus()" class="btn btn-primary chat-send w-md waves-effect waves-light"><span class="d-none d-sm-inline-block me-2">Send</span> <i class="mdi mdi-send float-end"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End d-lg-flex  -->
+                        
+                    </div> <!-- container-fluid -->
+                <!-- </div> -->
+                <!-- End Page-content -->
+
+                
+                
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+
+                <div class="rightbar-title d-flex align-items-center px-3 py-4">
+            
+                    <h5 class="m-0 me-2">Settings</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+
+
+                <!-- Settings -->
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Choose Layouts</h6>
+
+                
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <!-- <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="assets/libs/jquery.counterup/jquery.counterup.min.js"></script> -->
+
+        <!-- App js -->
+        <!-- <script src="assets/js/app.js"></script> -->
+        <script>
+            function UpdateStatus(Status){
+                user_input = document.getElementById('user_input').value
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+
+                var raw = JSON.stringify({
+                "message": user_input
+                });
+
+                var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+                };
+
+                fetch("https://127.0.0.1:8000/webhook", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+
+                            }
+        </script>
+    </body>
+
+</html>
