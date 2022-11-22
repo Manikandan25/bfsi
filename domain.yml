@@ -6,66 +6,54 @@ intents:
 - accounts
 - affirm
 - bot_challenge
-- cards
-- create_savings_account
+- check_balance_account
+- create_account
 - current_account
 - deny
 - goodbye
 - greet
 - inform
+- last_10_transactions_account
 - mood_great
 - mood_unhappy
 - savings_account
 entities:
-- email
+- account_type
 slots:
-  email:
-    type: text
-    influence_conversation: false
+  account_type:
+    type: categorical
+    influence_conversation: true
+    values:
+    - savings account
+    - current account
 responses:
   utter_greet:
   - buttons:
-    - payload: Accounts
-      title: accounts
-    - payload: Cards
-      title: cards
-    text: Hi there! I'm WHAFA, your personal Finance Assistant. What section I can help you with?
+    - payload: accounts
+      title: Accounts
+    text: Hi Manikandan! I'm WHAFA, your personal Finance Assistant. How can I be of assistance today?. Simply type your query to get started or select from the options below
   utter_accounts:
   - buttons:
-    - payload: savings_account
+    - payload: savings account
       title: Savings Account
-    - payload: current_account
+    - payload: current account
       title: Current Account
     text: Which type of account you would like to know more about?
   utter_savings_account:
   - buttons:
-    - payload: create_savings_account
-      title: Open a new savings account
-    - payload: balance_savings_account
-      title: Balance of the savings account
-    - payload: last_10_transactions_savings_account
+    - payload: create {account_type}
+      title: Open a new account
+    - payload: balance {account_type}
+      title: Balance of the account
+    - payload: last 10 transactions {account_type}
       title: Show last 10 transactions
-    text: How can I help with savings account?
-  utter_ask_create_savings_account_form_email:
-  - text: In order to create an account, we need your email address?
-  utter_create_savings_account:
-  - text: Based on the informations provided, I have submitted a request to create a savings accounts at our concern. You'll will receive the updates by email on {email} soon.
-  utter_current_account:
-  - buttons:
-    - payload: create_current_account
-      title: Open a new current account
-    - payload: balance_current_account
-      title: Balance of the current account
-    - payload: last_10_transactions_current_account
-      title: Show last 10 transactions
-    text: How can I help with current account?
-  utter_cards:
-  - buttons:
-    - payload: debit_card
-      title: Debit Card
-    - payload: credit_card
-      title: Credit Card
-    text: What do like know more about ?
+    text: How can I help with {account_type}?
+  utter_create_account:
+  - text: Based on the informations provided, I have submitted a request to create a {account_type} at our concern. You'll will receive the updates soon.
+  utter_check_balance_account:
+  - text: Your {account_type} balance is Rs. 19,001.48
+  utter_last_10_transactions_account:
+  - text: Here is the list of last 10 transactions of your {account_type}.1,2,3,4,5
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -79,12 +67,3 @@ responses:
   - text: I am a bot, powered by Rasa.
 actions:
 - action_create_savings_account
-forms:
-  create_savings_account_form:
-    required_slots:
-      email:
-      - entity: email
-        type: from_entity
-      - intent:
-        - inform
-        type: from_text

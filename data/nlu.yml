@@ -1,5 +1,9 @@
 version: "2.0"
 nlu:
+- lookup: account_type
+  examples: |
+    - savings account
+    - current account
 - intent: accounts
   examples: |
     - accounts
@@ -8,33 +12,64 @@ nlu:
     - list me the services under accounts
 - intent: savings_account
   examples: |
-    - savings_accounts
-    - savings account
-    - I want to know about saving account
-    - I am interested in savings account
-    - list me the services under saving account
-    - show savings account
-- intent: create_savings_account
-  examples: |
-    - create_savings_accounts
-    - I would like to open new savings account
-    - Open new savings account
-    - Create a saving account
+    - savings accounts{"account_type":"savings account"}
+    - savings account{"account_type":"savings account"}
+    - I want to know about [saving account](account_type){"account_type":"savings account"}
+    - I am interested in savings account{"account_type":"savings account"}
+    - list me the services under [saving account](account_type){"account_type":"savings account"}
+    - show savings account{"account_type":"savings account"}
 - intent: current_account
   examples: |
-    - current_accounts
-    - current account
-    - I want to know about curent account
-    - I am interested in current account
-    - list me the services under current account
-    - show the current account
-- intent: cards
+    - current account{"account_type":"current account"}
+    - I want to know about current account{"account_type":"current account"}
+    - I am interested in current account{"account_type":"current account"}
+    - list me the services under current account{"account_type":"current account"}
+    - show current account{"account_type":"current account"}
+- intent: create_account
   examples: |
-    - cards
-    - I want to know about cards
-    - I am interested in cards
-    - list me the services under cards
-    - what are the cards do you offer ?
+    - create savings account{"account_type":"savings account"}
+    - I would like to open new savings account{"account_type":"savings account"}
+    - Open new savings account{"account_type":"savings account"}
+    - Create a [saving account](account_type){"account_type":"savings account"}
+    - create current account{"account_type":"current account"}
+    - I would like to open new current account{"account_type":"current account"}
+    - Open new current account{"account_type":"current account"}
+    - Create a current account{"account_type":"current account"}
+- intent: check_balance_account
+  examples: |
+    - show balance of my savings account{"account_type":"savings account"}
+    - check balance of savings account{"account_type":"savings account"}
+    - what is left in my savings account{"account_type":"savings account"}
+    - how much is remaining in savings account{"account_type":"savings account"}
+    - what I have in savings account{"account_type":"savings account"}
+    - show balance of my current account{"account_type":"current account"}
+    - check balance of current account{"account_type":"current account"}
+    - what is left in my current account{"account_type":"current account"}
+    - how much is remaining in current account{"account_type":"current account"}
+    - what I have in current account{"account_type":"current account"}
+- intent: last_10_transactions_account
+  examples: |
+    - show transactions of my savings account{"account_type":"savings account"}
+    - last few transactions of savings account{"account_type":"savings account"}
+    - latest transactions in my savings account{"account_type":"savings account"}
+    - show transactions of my current account{"account_type":"current account"}
+    - last few transactions of current account{"account_type":"current account"}
+    - latest transactions in my current account{"account_type":"current account"}
+# - intent: current_account
+#   examples: |
+#     - current_accounts
+#     - current account
+#     - I want to know about [curent account](account_type)
+#     - I am interested in current account
+#     - list me the services under current account
+#     - show the current account
+# - intent: cards
+#   examples: |
+#     - cards
+#     - I want to know about cards
+#     - I am interested in cards
+#     - list me the services under cards
+#     - what are the cards do you offer ?
 - intent: inform
   examples: |
     - example@rasa.com

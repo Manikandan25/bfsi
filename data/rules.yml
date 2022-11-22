@@ -22,12 +22,27 @@ rules:
   - intent: savings_account
   - action: utter_savings_account
 
+- rule: current accounts tab
+  steps:
+  - intent: current_account
+  - action: utter_savings_account
+
 - rule: Activate email form for create account
   steps:
-  - intent: create_savings_account
-  - action: action_deactivate_loop
-  - active_loop: null
-  - action: create_savings_account_form
-  - active_loop: create_savings_account_form
-  - active_loop: null
-  - action: action_create_savings_account
+  - intent: create_account
+  # - action: action_deactivate_loop
+  # - active_loop: null
+  # - action: create_savings_account_form
+  # - active_loop: create_savings_account_form
+  # - active_loop: null
+  - action: utter_create_account
+
+- rule: Check account balance
+  steps:
+  - intent: check_balance_account
+  - action: utter_check_balance_account
+
+- rule: last 10 transaction
+  steps:
+  - intent: last_10_transactions_account
+  - action: utter_last_10_transactions_account
